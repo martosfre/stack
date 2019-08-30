@@ -23,10 +23,12 @@ struct stack pila;
 void push();
 int pop();
 void display();
+bool isEmpty();
 
 int main() {
 	int opcion;
 	pila.top = -1;
+
 
 	do {
 		printf("-------------------------------------\n");
@@ -84,7 +86,7 @@ void push() {
  * Función para eliminar un elemento en la Pila
  */
 int pop() {
-	int valorPila;
+	int valorPila = 0;
 	if (!isEmpty()){
 		valorPila = pila.numeros[pila.top];
 		printf("Elemento eliminado = %d\n", pila.numeros[pila.top]);
