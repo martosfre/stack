@@ -10,6 +10,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 #define TAMANO_STACK 5
 
 struct stack {
@@ -27,7 +28,6 @@ int main() {
 	int opcion;
 	pila.top = -1;
 
-	printf("Ejemplo Stack (Pila) \n");
 	do {
 		printf("-------------------------------------\n");
 		printf("              EJEMPLO STACK           \n");
@@ -66,7 +66,7 @@ int main() {
  */
 
 void push() {
-	int valorPila;
+	int valorPila = 0;
 	if (pila.top == (TAMANO_STACK - 1)) {
 		printf("Pila esta llena \n");
 	} else {
@@ -79,15 +79,13 @@ void push() {
 	return;
 }
 
+
 /**
  * Función para eliminar un elemento en la Pila
  */
 int pop() {
 	int valorPila;
-	if (pila.top == -1) {
-		printf("La pila esta vacía\n");
-		return (pila.top);
-	} else {
+	if (!isEmpty()){
 		valorPila = pila.numeros[pila.top];
 		printf("Elemento eliminado = %d\n", pila.numeros[pila.top]);
 		pila.top = pila.top - 1;
@@ -100,13 +98,23 @@ int pop() {
  */
 void display() {
 	int i;
-	if (pila.top == -1) {
-		printf("La pila esta vacía\n");
-	} else {
-		printf("Elementos de la Pila \n");
+	if (!isEmpty()){
+		printf("\nElementos de la Pila \n");
+		printf("--------\n");
 		for (i = pila.top; i >= 0; i--) {
 			printf("%d\n", pila.numeros[i]);
+			printf("--------\n");
 		}
 	}
 }
 
+/**
+ * Función para comprobar si está vacía la pila
+ */
+bool isEmpty (){
+	if (pila.top == -1) {
+		return true;
+	}else{
+		return false;
+	}
+}
